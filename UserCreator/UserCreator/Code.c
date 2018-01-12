@@ -60,18 +60,16 @@ int wmain(int argc, WCHAR **argv)
 	/*WCHAR refDomain[MAX_NAME];*/
 	DWORD cchRefDomain = 0;
 
-
 	//NetLocalGroupAddMembers
 	NET_API_STATUS localGroupAdd;
 	DWORD levelOfData = 0;	//LOCALGROUP_MEMBERS_INFO_0
 	LOCALGROUP_MEMBERS_INFO_0 localMembers;
-	DWORD totalEntries = 0;
+	DWORD totalEntries = 1;
 
 
-	if (argc != 3)	//Got just one argument.
+	if (argc != 2)
 	{
-		fwprintf(stderr, L"\nUsage: %s [UserName] [Privilege]\n", *argv);
-		fwprintf(stderr, L"\n[Privilege]: --user | --admin\n");
+		fwprintf(stderr, L"\nUsage: %s [UserName]\n", *argv);
 		return 1;
 
 	}
@@ -129,8 +127,6 @@ int wmain(int argc, WCHAR **argv)
 			}
 
 			PSID theSID;
-
-			//Love you. =)
 			LPWSTR refDomainName = (LPWSTR)malloc(cchRefDomain * sizeof(WCHAR));
 
 			if (!(theSID = LocalAlloc(memAttributes, cbSid)))
@@ -178,9 +174,6 @@ int wmain(int argc, WCHAR **argv)
 		}
 
 		LocalFree(groupSID);
-
-
 	}
-
 	return 0;
 }
