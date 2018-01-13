@@ -14,6 +14,19 @@ typedef enum
 
 }TYPE_OF_USER;
 
+VOID ShowHelp()
+{
+	wprintf(L"\nUser Creator Tool\n"
+			L"Copyright (C) 2018 Sergio Calderon\n"
+			L"Checho's Blog - http://geeks.ms/checho\n"
+			L"\nUsage:\n"
+			L"\t\nUserCreator.exe UserName Password [Privilege]\n"
+			L"\n[Privilege]:\n"
+			L"\n--user\n\n"
+			L"--admin\n"
+			L"\nExample:\n"
+			L"\nUserCreator Andy P@ssw0rd --admin\n");
+}
 
 VOID ShowError(DWORD errorCode)
 {
@@ -161,7 +174,7 @@ int wmain(int argc, WCHAR **argv)
 
 	if (argc != 4)
 	{
-		fwprintf(stderr, L"\nUsage: %s [UserName] \n", *argv);
+		ShowHelp();
 		return 1;
 
 	}
@@ -169,7 +182,7 @@ int wmain(int argc, WCHAR **argv)
 	if ((_wcsicmp(argv[3], L"--user") !=0) && 
 		(_wcsicmp(argv[3], L"--admin") != 0))
 	{
-		fwprintf(stderr, L"\nUsage: %s [UserName]\n", *argv);
+		ShowHelp();
 		return 1;
 	}
 
@@ -218,8 +231,10 @@ int wmain(int argc, WCHAR **argv)
 		else
 		{
 			fwprintf(stderr, L"\nWrong arguments.\n");
+			ShowHelp();
 		}	
 		
 	}
+
 	return 0;
 }

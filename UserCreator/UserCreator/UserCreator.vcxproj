@@ -122,6 +122,18 @@
   <ItemGroup>
     <ClCompile Include="Code.c" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="resource1.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="UserCreator1.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\icon1.ico" />
+    <Image Include="..\icon2.ico" />
+    <Image Include="..\userico.bmp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
